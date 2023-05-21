@@ -3,8 +3,8 @@
     <entity name="Entry" representedClassName="Entry" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="details" optional="YES" attributeType="String"/>
-        <attribute name="expense" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="time" optional="YES"/>
+        <attribute name="isExpense" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
 </model>
