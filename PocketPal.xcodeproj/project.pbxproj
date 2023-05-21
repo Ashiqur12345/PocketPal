@@ -11,6 +11,7 @@
 		8B1A83492A1A90F200415C68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A83482A1A90F200415C68 /* ContentView.swift */; };
 		8B1A834B2A1A90F400415C68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1A834A2A1A90F400415C68 /* Assets.xcassets */; };
 		8B1A834E2A1A90F400415C68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1A834D2A1A90F400415C68 /* Preview Assets.xcassets */; };
+		8B4173092A1A9B67004C4729 /* PocketPal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B4173072A1A9B67004C4729 /* PocketPal.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		8B1A83482A1A90F200415C68 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8B1A834A2A1A90F400415C68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B1A834D2A1A90F400415C68 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8B4173082A1A9B67004C4729 /* PocketPal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PocketPal.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				8B1A83482A1A90F200415C68 /* ContentView.swift */,
 				8B1A834A2A1A90F400415C68 /* Assets.xcassets */,
 				8B1A834C2A1A90F400415C68 /* Preview Content */,
+				8B4173072A1A9B67004C4729 /* PocketPal.xcdatamodeld */,
 			);
 			path = PocketPal;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B4173092A1A9B67004C4729 /* PocketPal.xcdatamodeld in Sources */,
 				8B1A83492A1A90F200415C68 /* ContentView.swift in Sources */,
 				8B1A83472A1A90F200415C68 /* PocketPalApp.swift in Sources */,
 			);
@@ -339,6 +343,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8B4173072A1A9B67004C4729 /* PocketPal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8B4173082A1A9B67004C4729 /* PocketPal.xcdatamodel */,
+			);
+			currentVersion = 8B4173082A1A9B67004C4729 /* PocketPal.xcdatamodel */;
+			path = PocketPal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8B1A833B2A1A90F200415C68 /* Project object */;
 }
