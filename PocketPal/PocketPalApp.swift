@@ -1,17 +1,11 @@
-//
-//  PocketPalApp.swift
-//  PocketPal
-//
-//  Created by itiw-mac 256 on 5/21/23.
-//
-
 import SwiftUI
 
 @main
 struct PocketPalApp: App {
     var body: some Scene {
+        let context = Persistence.shared.container.viewContext
         WindowGroup {
-            ContentView()
+            HomeScreenView(viewModel: HomeScreenViewModel()).environment(\.managedObjectContext, context)
         }
     }
 }
