@@ -8,21 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		8B0C99FA2A1BF4DC00B93BCD /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0C99F92A1BF4DC00B93BCD /* HomeScreenView.swift */; };
-		8B0C99FD2A1BF57300B93BCD /* MonthlySummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0C99FC2A1BF57300B93BCD /* MonthlySummaryView.swift */; };
-		8B0C9A002A1BFE4700B93BCD /* MonthlySummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0C99FF2A1BFE4700B93BCD /* MonthlySummaryViewModel.swift */; };
 		8B0C9A022A1C00C900B93BCD /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0C9A012A1C00C900B93BCD /* HomeScreenViewModel.swift */; };
 		8B1A83472A1A90F200415C68 /* PocketPalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1A83462A1A90F200415C68 /* PocketPalApp.swift */; };
 		8B1A834B2A1A90F400415C68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1A834A2A1A90F400415C68 /* Assets.xcassets */; };
 		8B1A834E2A1A90F400415C68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1A834D2A1A90F400415C68 /* Preview Assets.xcassets */; };
 		8B4173092A1A9B67004C4729 /* PocketPal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B4173072A1A9B67004C4729 /* PocketPal.xcdatamodeld */; };
 		8B41730B2A1A9D05004C4729 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41730A2A1A9D05004C4729 /* Persistence.swift */; };
-		8BE47F242A1D1C56007596FA /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE47F232A1D1C56007596FA /* Date+Extensions.swift */; };
+		8BE47F2A2A1D34B5007596FA /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE47F292A1D34B5007596FA /* SummaryViewModel.swift */; };
+		8BE47F2C2A1D34B9007596FA /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE47F2B2A1D34B9007596FA /* SummaryView.swift */; };
+		8BE47F2F2A1D563D007596FA /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE47F2E2A1D563D007596FA /* Summary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8B0C99F92A1BF4DC00B93BCD /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
-		8B0C99FC2A1BF57300B93BCD /* MonthlySummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryView.swift; sourceTree = "<group>"; };
-		8B0C99FF2A1BFE4700B93BCD /* MonthlySummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryViewModel.swift; sourceTree = "<group>"; };
 		8B0C9A012A1C00C900B93BCD /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		8B1A83432A1A90F200415C68 /* PocketPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1A83462A1A90F200415C68 /* PocketPalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketPalApp.swift; sourceTree = "<group>"; };
@@ -30,7 +28,9 @@
 		8B1A834D2A1A90F400415C68 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8B4173082A1A9B67004C4729 /* PocketPal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PocketPal.xcdatamodel; sourceTree = "<group>"; };
 		8B41730A2A1A9D05004C4729 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		8BE47F232A1D1C56007596FA /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		8BE47F292A1D34B5007596FA /* SummaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
+		8BE47F2B2A1D34B9007596FA /* SummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		8BE47F2E2A1D563D007596FA /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 		8B0C99FB2A1BF56600B93BCD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8B0C99FC2A1BF57300B93BCD /* MonthlySummaryView.swift */,
+				8BE47F2B2A1D34B9007596FA /* SummaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -63,8 +63,8 @@
 		8B0C99FE2A1BFE3200B93BCD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				8B0C99FF2A1BFE4700B93BCD /* MonthlySummaryViewModel.swift */,
 				8B0C9A012A1C00C900B93BCD /* HomeScreenViewModel.swift */,
+				8BE47F292A1D34B5007596FA /* SummaryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -88,6 +88,7 @@
 		8B1A83452A1A90F200415C68 /* PocketPal */ = {
 			isa = PBXGroup;
 			children = (
+				8BE47F2D2A1D5630007596FA /* Models */,
 				8BE47F222A1D1C42007596FA /* Extensions */,
 				8B0C99FE2A1BFE3200B93BCD /* ViewModels */,
 				8B0C99FB2A1BF56600B93BCD /* Views */,
@@ -112,9 +113,16 @@
 		8BE47F222A1D1C42007596FA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8BE47F232A1D1C56007596FA /* Date+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8BE47F2D2A1D5630007596FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8BE47F2E2A1D563D007596FA /* Summary.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +196,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B4173092A1A9B67004C4729 /* PocketPal.xcdatamodeld in Sources */,
-				8BE47F242A1D1C56007596FA /* Date+Extensions.swift in Sources */,
+				8BE47F2A2A1D34B5007596FA /* SummaryViewModel.swift in Sources */,
+				8BE47F2F2A1D563D007596FA /* Summary.swift in Sources */,
 				8B0C99FA2A1BF4DC00B93BCD /* HomeScreenView.swift in Sources */,
 				8B0C9A022A1C00C900B93BCD /* HomeScreenViewModel.swift in Sources */,
-				8B0C99FD2A1BF57300B93BCD /* MonthlySummaryView.swift in Sources */,
-				8B0C9A002A1BFE4700B93BCD /* MonthlySummaryViewModel.swift in Sources */,
+				8BE47F2C2A1D34B9007596FA /* SummaryView.swift in Sources */,
 				8B41730B2A1A9D05004C4729 /* Persistence.swift in Sources */,
 				8B1A83472A1A90F200415C68 /* PocketPalApp.swift in Sources */,
 			);

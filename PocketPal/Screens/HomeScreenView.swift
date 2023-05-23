@@ -11,54 +11,32 @@ struct HomeScreenView: View {
             NavigationStack{
                 VStack{
                     Text("Pocket Pal").font(.title).bold()
-                    
                     Divider()
-                    
-                    monthNavigationButtons
-                    
-                    MonthlySummaryView(date: viewModel.monthToSummarize)
-                        .padding(.vertical)
+                    SummaryView(viewModel: SummaryViewModel(summary: Summary(date: .now, extent: .monthly)), showNavigator: true)
+                    Spacer()
+                }
+                .toolbar{
+                    ToolbarItem(placement: .bottomBar){
+                        addEntryButton
+                    }
                 }
             }
-            addEntryButton
         }.ignoresSafeArea(.all, edges: [.bottom])
     }
     
-    private var monthNavigationButtons: some View{
-        HStack{
-            Button{
-                viewModel.summarizePreviousMonth()
-            } label:{
-                Image(systemName: "chevron.left")
-                Text(viewModel.previousMonthText)
-            }
-            .disabled(!viewModel.enablePreviousMonth)
-            
-            Spacer()
-            
-            Button{
-                viewModel.summarizeNextMonth()
-            } label:{
-                Text(viewModel.nextMonthText)
-                Image(systemName: "chevron.right")
-            }
-            .disabled(!viewModel.enableNextMonth)
-        }.font(.title3)
-            .padding(.horizontal)
-    }
-    
     private var addEntryButton: some View{
-        
         Button{
+            
         } label:{
             Label("Add Entry", systemImage: "plus.circle")
                 .foregroundColor(.white)
                 .font(.title)
                 .padding()
-                .frame(height: 100)
-                .frame(maxWidth: .infinity)
+                .frame(height: 50)
+                .frame(minWidth: 350, maxWidth: .infinity)
                 .background(Color.accentColor)
                 .clipShape(RoundedRectangle(cornerRadius: 50))
+                .padding([.top])
         }
         
     }
