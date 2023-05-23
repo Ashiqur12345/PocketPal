@@ -12,6 +12,12 @@ struct MonthlySummaryView: View {
     
     var body: some View {
         VStack{
+            HStack{
+                Text("Summary of ")
+                
+                Text(viewModel.summaryOfMonthText).bold()
+            }.font(.title3)
+            
             latestEntries.padding(.vertical)
             summaryPieChart
             Spacer()

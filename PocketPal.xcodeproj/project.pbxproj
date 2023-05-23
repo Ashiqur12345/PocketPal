@@ -16,6 +16,7 @@
 		8B1A834E2A1A90F400415C68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1A834D2A1A90F400415C68 /* Preview Assets.xcassets */; };
 		8B4173092A1A9B67004C4729 /* PocketPal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B4173072A1A9B67004C4729 /* PocketPal.xcdatamodeld */; };
 		8B41730B2A1A9D05004C4729 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41730A2A1A9D05004C4729 /* Persistence.swift */; };
+		8BE47F242A1D1C56007596FA /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE47F232A1D1C56007596FA /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		8B1A834D2A1A90F400415C68 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8B4173082A1A9B67004C4729 /* PocketPal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PocketPal.xcdatamodel; sourceTree = "<group>"; };
 		8B41730A2A1A9D05004C4729 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		8BE47F232A1D1C56007596FA /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		8B1A83452A1A90F200415C68 /* PocketPal */ = {
 			isa = PBXGroup;
 			children = (
+				8BE47F222A1D1C42007596FA /* Extensions */,
 				8B0C99FE2A1BFE3200B93BCD /* ViewModels */,
 				8B0C99FB2A1BF56600B93BCD /* Views */,
 				8B0C99F82A1BF4B600B93BCD /* Screens */,
@@ -104,6 +107,14 @@
 				8B1A834D2A1A90F400415C68 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8BE47F222A1D1C42007596FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8BE47F232A1D1C56007596FA /* Date+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B4173092A1A9B67004C4729 /* PocketPal.xcdatamodeld in Sources */,
+				8BE47F242A1D1C56007596FA /* Date+Extensions.swift in Sources */,
 				8B0C99FA2A1BF4DC00B93BCD /* HomeScreenView.swift in Sources */,
 				8B0C9A022A1C00C900B93BCD /* HomeScreenViewModel.swift in Sources */,
 				8B0C99FD2A1BF57300B93BCD /* MonthlySummaryView.swift in Sources */,

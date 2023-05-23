@@ -7,60 +7,60 @@ struct HomeScreenView: View {
     @ObservedObject var viewModel: HomeScreenViewModel
     
     var body: some View {
-        NavigationStack{
-            VStack{
-//                Text("Pocket Pal").font(.headline)
-                Text("Summary of \(viewModel.summaryOfMonthText)").font(.title3).bold()
-                
-                Divider()
-                            .padding()
-                monthNavigationButtons
-                MonthlySummaryView(date: viewModel.monthToSummarize)
-                Spacer()
-                addEntryButton.ignoresSafeArea()
+        VStack{
+            NavigationStack{
+                VStack{
+                    Text("Pocket Pal").font(.title).bold()
+                    
+                    Divider()
+                    
+                    monthNavigationButtons
+                    
+                    MonthlySummaryView(date: viewModel.monthToSummarize)
+                        .padding(.vertical)
+                }
             }
-            .padding()
-        }
+            addEntryButton
+        }.ignoresSafeArea(.all, edges: [.bottom])
     }
     
     private var monthNavigationButtons: some View{
         HStack{
             Button{
-                viewModel.changeMonth(by: -1)
+                viewModel.summarizePreviousMonth()
             } label:{
                 Image(systemName: "chevron.left")
                 Text(viewModel.previousMonthText)
             }
-            .disabled(viewModel.monthToSummarize < viewModel.oldestEntryDate)
+            .disabled(!viewModel.enablePreviousMonth)
             
             Spacer()
             
             Button{
-                viewModel.changeMonth(by: 1)
+                viewModel.summarizeNextMonth()
             } label:{
                 Text(viewModel.nextMonthText)
                 Image(systemName: "chevron.right")
             }
-            .disabled(viewModel.monthToSummarize >= viewModel.latestEntryDate)
+            .disabled(!viewModel.enableNextMonth)
         }.font(.title3)
+            .padding(.horizontal)
     }
     
     private var addEntryButton: some View{
+        
         Button{
         } label:{
-            HStack{
-                Text("Add Entry")
-                Image(systemName: "plus")
-            }
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .frame(minHeight: 80)
-            .background(Color.accentColor)
-            .clipShape(
-                RoundedRectangle(cornerRadius: 100)
-            )
+            Label("Add Entry", systemImage: "plus.circle")
+                .foregroundColor(.white)
+                .font(.title)
+                .padding()
+                .frame(height: 100)
+                .frame(maxWidth: .infinity)
+                .background(Color.accentColor)
+                .clipShape(RoundedRectangle(cornerRadius: 50))
         }
+        
     }
 }
 
