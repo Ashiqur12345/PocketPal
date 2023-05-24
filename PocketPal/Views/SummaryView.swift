@@ -76,7 +76,11 @@ struct SummaryView: View {
     
     private var latestEntries: some View{
         VStack(alignment: .leading){
-            Text("Latest Entries").font(.subheadline).padding(.horizontal)
+            HStack{
+                Text("Latest entries of")
+                Text(viewModel.currentDateText).bold()
+            }
+                .font(.subheadline).padding(.horizontal)
             
             List(-10..<0){ i in
                 NavigationLink{
