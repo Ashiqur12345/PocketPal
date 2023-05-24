@@ -20,6 +20,8 @@ struct HomeScreenView: View {
                         addEntryButton
                     }
                 }
+                .navigationTitle("Home")
+                .navigationBarHidden(true)
             }
         }.ignoresSafeArea(.all, edges: [.bottom])
     }
@@ -32,8 +34,8 @@ struct HomeScreenView: View {
                 .foregroundColor(.white)
                 .font(.title)
                 .padding()
-                .frame(height: 50)
-                .frame(minWidth: 350, maxWidth: .infinity)
+                .frame(height: 100)
+                .frame(minWidth: 250, maxWidth: .infinity)
                 .background(Color.accentColor)
                 .clipShape(RoundedRectangle(cornerRadius: 50))
                 .padding([.top])
