@@ -1,7 +1,8 @@
 import CoreData
 
-class Persistence{
+class PersistenceController{
     let container: NSPersistentContainer
+    
     private init(inMemory: Bool = false){
         container = NSPersistentContainer(name: "PocketPal")
         if inMemory {
@@ -15,11 +16,10 @@ class Persistence{
         }
     }
     
+    static let shared: PersistenceController = PersistenceController()
     
-    static let shared: Persistence = Persistence()
-    
-    static var preview: Persistence = {
-        let result = Persistence(inMemory: true)
+    static var preview: PersistenceController = {
+        let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
 
         loadDummyData(context: viewContext)
@@ -34,6 +34,10 @@ class Persistence{
         }
         return result
     }()
+    
+    var viewContext: NSManagedObjectContext{
+        container.viewContext
+    }
     
     private static func loadDummyData(context: NSManagedObjectContext){
         

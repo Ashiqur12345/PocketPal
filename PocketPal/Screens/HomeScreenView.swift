@@ -46,6 +46,6 @@ struct HomeScreenView: View {
 
 struct HomeScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreenView(viewModel: HomeScreenViewModel()).environment(\.managedObjectContext, Persistence.preview.container.viewContext)
+        HomeScreenView(viewModel: HomeScreenViewModel()).environment(\.managedObjectContext, PersistenceController.preview.viewContext)
     }
 }

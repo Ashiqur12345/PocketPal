@@ -101,6 +101,6 @@ struct SummaryView: View {
 struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
         SummaryView(viewModel: SummaryViewModel(summary: Summary(date: .now, extent: .monthly)), showNavigator: true)
-            .environment(\.managedObjectContext, Persistence.preview.container.viewContext)
+            .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
     }
 }
