@@ -1,46 +1,95 @@
 import SwiftUI
 
+enum HomeTabs{
+    case home
+    case search
+    case stats
+}
+
 struct HomeScreenView: View {
     
     @Environment(\.managedObjectContext) private var context
     
     @ObservedObject var viewModel: HomeScreenViewModel
-    
+    @State var selectedTab: HomeTabs = .home
     var body: some View {
         VStack{
-            NavigationStack{
-                VStack{
-                    Text("Pocket Pal").font(.title).bold()
-                    Divider()
-                    SummaryView(viewModel: SummaryViewModel(summary: Summary(date: .now, extent: .monthly)), showNavigator: true)
-                    Spacer()
-                }
-                .toolbar{
-                    ToolbarItem(placement: .bottomBar){
-                        addEntryButton
-                    }
-                }
-                .navigationTitle("Home")
-                .navigationBarHidden(true)
+            TabView(selection: $selectedTab) {
+                homeTab
+                searchTab
+                statsTab
             }
         }.ignoresSafeArea(.all, edges: [.bottom])
     }
     
-    private var addEntryButton: some View{
-        Button{
-            
-        } label:{
-            Label("Add Entry", systemImage: "plus.circle")
-                .foregroundColor(.white)
-                .font(.title)
-                .padding()
-                .frame(height: 100)
-                .frame(minWidth: 250, maxWidth: .infinity)
-                .background(Color.accentColor)
-                .clipShape(RoundedRectangle(cornerRadius: 50))
-                .padding([.top])
-        }
+    private var homeTab: some View{
         
+        NavigationStack{
+            VStack{
+                Text("Pocket Pal").font(.title).bold()
+                SummaryView(viewModel: SummaryViewModel(summary: Summary(date: .now, extent: .monthly)), showNavigator: false)
+                Spacer()
+                addEntryButton
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding([.bottom, .trailing])
+            }
+            .navigationTitle("Home")
+            .navigationBarHidden(true)
+            /*.toolbar{
+                ToolbarItem{
+                    Button{
+                        
+                    } label: {
+                        Image(systemName: "gearshape")
+                    }
+                }
+            }*/
+        }
+        .tabItem {
+            Label("Home", systemImage: "house")
+        }
+        .tag(HomeTabs.home)
+    }
+    
+    private var searchTab: some View{
+        NavigationStack{
+            Text("Search")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Search")
+        }
+        .tabItem {
+            Label("Search", systemImage: "magnifyingglass")
+        }
+        .tag(HomeTabs.search)
+    }
+    
+    private var statsTab: some View{
+        NavigationStack{
+            VStack{
+                SummaryView(viewModel: SummaryViewModel(summary: Summary(date: .now, extent: .monthly)), showNavigator: true)
+                Spacer()
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Stats")
+        }
+        .tabItem {
+            Label("Stats", systemImage: "chart.xyaxis.line")
+        }
+        .tag(HomeTabs.stats)
+    }
+    
+    private var addEntryButton: some View{
+        NavigationLink{
+            Text("Add Entry")
+                .navigationTitle("Add New Entry")
+        } label: {
+            Image(systemName: "plus.circle")
+                .font(.title)
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.accentColor)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+        }
     }
 }
 
