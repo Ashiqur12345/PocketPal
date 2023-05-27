@@ -27,11 +27,16 @@ struct HomeScreenView: View {
         NavigationStack{
             VStack{
                 Text("Pocket Pal").font(.title).bold()
-                SummaryView(viewModel: SummaryViewModel(summary: Summary(date: .now, extent: .monthly)), showNavigator: false)
-                Spacer()
-                addEntryButton
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .padding([.bottom, .trailing])
+                
+                ZStack {
+                    SummaryView(viewModel: SummaryViewModel(), showNavigator: false, showGraph: false)
+                    VStack{
+                        Spacer()
+                        addEntryButton
+                            .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+                            .padding([.bottom, .trailing])
+                    }
+                }
             }
             .navigationTitle("Home")
             .navigationBarHidden(true)
@@ -66,7 +71,7 @@ struct HomeScreenView: View {
     private var statsTab: some View{
         NavigationStack{
             VStack{
-                SummaryView(viewModel: SummaryViewModel(summary: Summary(date: .now, extent: .monthly)), showNavigator: true)
+                SummaryView(viewModel: SummaryViewModel(), showNavigator: true, showGraph: true)
                 Spacer()
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -80,7 +85,7 @@ struct HomeScreenView: View {
     
     private var addEntryButton: some View{
         NavigationLink{
-            Text("Add Entry")
+            Text("Add New Entry")
                 .navigationTitle("Add New Entry")
         } label: {
             Image(systemName: "plus.circle")

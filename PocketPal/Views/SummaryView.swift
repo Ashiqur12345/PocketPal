@@ -4,45 +4,46 @@ struct SummaryView: View {
     
     @ObservedObject var viewModel: SummaryViewModel
     var showNavigator: Bool
+    var showGraph: Bool
     @Environment(\.managedObjectContext) private var context
     
     var body: some View {
         VStack{
             Text(viewModel.currentDateText).bold().font(.title3)
-            summaryExtentNavigationButtons.padding(5)
             
             if showNavigator {
-                summaryDateNavigationButtons
+                VStack{
+                    summaryExtentNavigationButtons
+                    summaryDateNavigationButtons
+                }
             }
             
-            summaryPieChart
-            Divider()
+            if showGraph{
+                summaryPieChart
+                Divider()
+            }
+            
             latestEntries
             Spacer()
         }
     }
     
+    
     private var summaryExtentNavigationButtons: some View{
-        HStack{
-            
-            ForEach(SummaryViewModel.SummaryExtent.allCases, id: \.rawValue){ extent in 
+        Picker("", selection: $viewModel.summaryExtent){
+            ForEach(SummaryExtent.allCases){ extent in
                 
-                Button{
-                    viewModel.changeSummaryExtent(extent: extent)
-                } label:{
-                    Text(extent.rawValue)
-                }
-                .disabled(viewModel.summaryExtent == extent)
+                Text(extent.rawValue.capitalized).tag(extent)
+                
             }
-            
         }
-        .padding(.horizontal)
+        .pickerStyle(.segmented)
     }
     
     private var summaryDateNavigationButtons: some View{
         HStack{
             Button{
-                viewModel.summarizePreviousDate()
+                viewModel.gotoPreviousDate()
             } label:{
                 Image(systemName: "chevron.backward")
                 Text(viewModel.previousDateText)
@@ -54,7 +55,7 @@ struct SummaryView: View {
             HStack{
                 
                 Button{
-                    viewModel.summarizeNextDate()
+                    viewModel.gotoNextDate()
                 } label:{
                     Text(viewModel.nextDateText)
                     Image(systemName: "chevron.forward")
@@ -63,7 +64,7 @@ struct SummaryView: View {
                 
                 if viewModel.canVisitNextDate{
                     Button{
-                        viewModel.summarizeLatestDate()
+                        viewModel.gotoLatestDate()
                     } label:{
                         Image(systemName: "chevron.forward.to.line")
                     }
@@ -76,19 +77,15 @@ struct SummaryView: View {
     
     private var latestEntries: some View{
         VStack(alignment: .leading){
-            HStack{
-                Text("Latest entries of")
-                Text(viewModel.currentDateText).bold()
-            }
-                .font(.subheadline).padding(.horizontal)
-            
-            List(-10..<0){ i in
+            List(-20..<0){ i in
+                
                 NavigationLink{
                     Text("This is Item \(i * -1)").font(.title)
                 } label: {
                     Text("Item \(i * -1)").font(.title2)
                         .padding(5)
                 }
+                
             }.listStyle(.inset)
         }
     }
@@ -100,7 +97,7 @@ struct SummaryView: View {
 
 struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        SummaryView(viewModel: SummaryViewModel(summary: Summary(date: .now, extent: .monthly)), showNavigator: true)
+        SummaryView(viewModel: SummaryViewModel(), showNavigator: true, showGraph: true)
             .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
     }
 }

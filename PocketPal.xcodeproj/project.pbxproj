@@ -16,7 +16,6 @@
 		8B41730B2A1A9D05004C4729 /* PersistencePersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41730A2A1A9D05004C4729 /* PersistencePersistenceController.swift */; };
 		8BE47F2A2A1D34B5007596FA /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE47F292A1D34B5007596FA /* SummaryViewModel.swift */; };
 		8BE47F2C2A1D34B9007596FA /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE47F2B2A1D34B9007596FA /* SummaryView.swift */; };
-		8BE47F2F2A1D563D007596FA /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE47F2E2A1D563D007596FA /* Summary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 		8B41730A2A1A9D05004C4729 /* PersistencePersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencePersistenceController.swift; sourceTree = "<group>"; };
 		8BE47F292A1D34B5007596FA /* SummaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
 		8BE47F2B2A1D34B9007596FA /* SummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
-		8BE47F2E2A1D563D007596FA /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +118,6 @@
 		8BE47F2D2A1D5630007596FA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8BE47F2E2A1D563D007596FA /* Summary.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,7 +194,6 @@
 			files = (
 				8B4173092A1A9B67004C4729 /* PocketPal.xcdatamodeld in Sources */,
 				8BE47F2A2A1D34B5007596FA /* SummaryViewModel.swift in Sources */,
-				8BE47F2F2A1D563D007596FA /* Summary.swift in Sources */,
 				8B0C99FA2A1BF4DC00B93BCD /* HomeScreenView.swift in Sources */,
 				8B0C9A022A1C00C900B93BCD /* HomeScreenViewModel.swift in Sources */,
 				8BE47F2C2A1D34B9007596FA /* SummaryView.swift in Sources */,

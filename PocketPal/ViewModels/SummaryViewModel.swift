@@ -1,29 +1,57 @@
 import Foundation
 
-class SummaryViewModel: ObservableObject{
+enum SummaryExtent: String, CaseIterable, Identifiable{
     
-    typealias SummaryExtent = Summary.Extent
+    case daily
+    case monthly
+    case yearly
     
-    @Published private var summary: Summary
-    
-    init(summary: Summary) {
-        self.summary = summary
+    var id: String{
+        rawValue
     }
     
-    var summaryExtent: Summary.Extent{
-        return summary.extent
+    var calendarComponent: Calendar.Component{
+        switch self {
+        case .daily:
+            return .day
+        case .monthly:
+            return .month
+        case .yearly:
+            return .year
+        }
+    }
+}
+
+class SummaryViewModel: ObservableObject{
+    
+    @Published var summaryExtent: SummaryExtent{
+        didSet{
+            if date < oldestEntryDate{
+                date = latestEntryDate
+            }
+    
+            if date > latestEntryDate{
+                date = latestEntryDate
+            }
+        }
+    }
+    @Published var date: Date
+    
+    init(summaryExtent: SummaryExtent = .monthly, date: Date = .now) {
+        self.summaryExtent = summaryExtent
+        self.date = date
     }
     
     var oldestEntryDate: Date{
-        return Calendar.current.date(byAdding: summary.by, value: -3, to: .now)!
+        return Calendar.current.date(byAdding: summaryExtent.calendarComponent, value: -50, to: .now)!
     }
     
     var latestEntryDate: Date = .now
     
     var currentDateText: String{
         
-        if Calendar.current.compare(summary.date, to: .now, toGranularity: summary.by) == .orderedSame{
-            switch summary.by {
+        if Calendar.current.compare(date, to: .now, toGranularity: summaryExtent.calendarComponent) == .orderedSame{
+            switch summaryExtent.calendarComponent {
             case .day:
                 return "Today"
             case .month:
@@ -35,7 +63,7 @@ class SummaryViewModel: ObservableObject{
         }
         let dateFormatter = DateFormatter()
         
-        switch summary.by {
+        switch summaryExtent.calendarComponent {
         case .day:
             dateFormatter.dateFormat = "MMM dd, yyyy"
         case .month:
@@ -45,12 +73,12 @@ class SummaryViewModel: ObservableObject{
         default:
             dateFormatter.dateFormat = "MMM dd, yyyy"
         }
-        return dateFormatter.string(from: summary.date)
+        return dateFormatter.string(from: date)
     }
     
     var previousDateText: String {
         
-        if let date = Calendar.current.date(byAdding: summary.by, value: -1, to: summary.date){
+        if let date = Calendar.current.date(byAdding: summaryExtent.calendarComponent, value: -1, to: date){
             return shortenedDateDescription(date: date)
         }
         
@@ -59,22 +87,22 @@ class SummaryViewModel: ObservableObject{
     
     var nextDateText: String {
         
-        if let date = Calendar.current.date(byAdding: summary.by, value: 1, to: summary.date){
+        if let date = Calendar.current.date(byAdding: summaryExtent.calendarComponent, value: 1, to: date){
             return shortenedDateDescription(date: date)
         }
         return ""
     }
     
     var canVisitPreviousDate: Bool {
-        if let previousDate = Calendar.current.date(byAdding: summary.by, value: -1, to: summary.date){
-            return Calendar.current.compare(previousDate, to: oldestEntryDate, toGranularity: summary.by) != .orderedAscending
+        if let previousDate = Calendar.current.date(byAdding: summaryExtent.calendarComponent, value: -1, to: date){
+            return Calendar.current.compare(previousDate, to: oldestEntryDate, toGranularity: summaryExtent.calendarComponent) != .orderedAscending
         }
         return false
     }
     
     var canVisitNextDate: Bool {
-        if let nextDate = Calendar.current.date(byAdding: summary.by, value: 1, to: summary.date){
-            return Calendar.current.compare(nextDate, to: latestEntryDate, toGranularity: summary.by) != .orderedDescending
+        if let nextDate = Calendar.current.date(byAdding: summaryExtent.calendarComponent, value: 1, to: date){
+            return Calendar.current.compare(nextDate, to: latestEntryDate, toGranularity: summaryExtent.calendarComponent) != .orderedDescending
         }
         return false
     }
@@ -83,7 +111,7 @@ class SummaryViewModel: ObservableObject{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM yyyy"
         
-        switch summary.by {
+        switch summaryExtent.calendarComponent {
         case .day:
             dateFormatter.dateFormat = "MMM dd"
         case .month:
@@ -100,34 +128,21 @@ class SummaryViewModel: ObservableObject{
     
     // User Intents
     
-    func summarizePreviousDate(){
+    func gotoPreviousDate(){
         
-        if let previousDate = Calendar.current.date(byAdding: summary.by, value: -1, to: summary.date){
-            summary.date = previousDate
+        if let previousDate = Calendar.current.date(byAdding: summaryExtent.calendarComponent, value: -1, to: date){
+            date = previousDate
         }
     }
     
-    func summarizeNextDate(){
+    func gotoNextDate(){
 
-        if let nextDate = Calendar.current.date(byAdding: summary.by, value: 1, to: summary.date){
-            summary.date = nextDate
+        if let nextDate = Calendar.current.date(byAdding: summaryExtent.calendarComponent, value: 1, to: date){
+            date = nextDate
         }
     }
     
-    func summarizeLatestDate(){
-        summary.date = latestEntryDate
+    func gotoLatestDate(){
+        date = latestEntryDate
     }
-    
-    func changeSummaryExtent(extent: SummaryExtent){
-        summary.extent = extent
-        
-        if summary.date < oldestEntryDate{
-            summary.date = latestEntryDate
-        }
-        
-        if summary.date > latestEntryDate{
-            summary.date = latestEntryDate
-        }
-    }
-    
 }
