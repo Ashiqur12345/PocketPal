@@ -85,7 +85,7 @@ struct HomeScreenView: View {
     
     private var addEntryButton: some View{
         NavigationLink{
-            Text("Add New Entry")
+            EntryInputView(viewModel: EntryInputViewModel(context: context))
                 .navigationTitle("Add New Entry")
         } label: {
             Image(systemName: "plus.circle")

@@ -44,14 +44,14 @@ class PersistenceController{
         let incomeEntry = Entry(context: context)
         incomeEntry.title = "Dummy INCOME"
         incomeEntry.isExpense = false
-        incomeEntry.amount = 500
+        incomeEntry.price = 500
         incomeEntry.time = .now
         incomeEntry.details = "This is a dummy income"
         
         let expenseEntry = Entry(context: context)
         expenseEntry.title = "Dummy EXPENSE"
         expenseEntry.isExpense = true
-        expenseEntry.amount = 100
+        expenseEntry.price = 100
         expenseEntry.time = .now
         expenseEntry.details = "This is a dummy expense"
     }
