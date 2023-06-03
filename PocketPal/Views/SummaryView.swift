@@ -23,7 +23,7 @@ struct SummaryView: View {
                 Divider()
             }
             
-            latestEntries
+            entryList
             Spacer()
         }
     }
@@ -75,7 +75,7 @@ struct SummaryView: View {
             .padding(.horizontal)
     }
     
-    private var latestEntries: some View{
+    private var entryList: some View{
         VStack(alignment: .leading){
             List(-20..<0){ i in
                 
@@ -97,7 +97,7 @@ struct SummaryView: View {
 
 struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        SummaryView(viewModel: SummaryViewModel(), showNavigator: true, showGraph: true)
+        SummaryView(viewModel: SummaryViewModel(context: PersistenceController.preview.viewContext), showNavigator: true, showGraph: true)
             .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
     }
 }

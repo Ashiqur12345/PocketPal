@@ -3,25 +3,26 @@ import SwiftUI
 struct EntryInputView: View {
     
     @ObservedObject var viewModel: EntryInputViewModel
+    @Environment(\.presentationMode) var presentation
     
     
     var body: some View {
-        NavigationStack{
+        VStack{
             Form{
                 Section("Mandatory"){
                     TextField("Extry Title", text: $viewModel.entryTitle)
-                    TextField("Price", value: $viewModel.entryPrice, format: .currency(code: "BDT"))
+                    TextField("Price", value: $viewModel.entryPrice, format: .number)
                 }
                 Section("Expense / Income?"){
-                    Toggle(.init("Expense/Income? Answer: \(viewModel.entryIsExprense ? "**Expense**" : "**Income**")"), isOn: $viewModel.entryIsExprense)
+                    Toggle(.init("Expense/Income? Answer: **\(viewModel.entryIsExprense ? "Expense" : "Income")**"), isOn: $viewModel.entryIsExprense)
                 }
                 
                 Section("Date"){
-                    DatePicker("Entry Date", selection: $viewModel.entryDate, displayedComponents: [.date, .hourAndMinute])
+                    DatePicker("Entry Date", selection: $viewModel.entryTime, displayedComponents: [.date, .hourAndMinute])
                 }
                 
                 Section("More About this Entry"){
-                    TextField("Address", text: $viewModel.entryDetails, axis: .vertical)
+                    TextField("Details", text: $viewModel.entryDetails, axis: .vertical)
                                 .lineLimit(3, reservesSpace: true)
                 }
                 
@@ -32,48 +33,44 @@ struct EntryInputView: View {
                         Spacer()
                     }
                 }
-                
-                Section{
-                    Button{
-                        
-                    } label: {
-                        Text("Save changes")
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            
-                    }
-                    
-                    Button{
-                    } label: {
-                        Text("Cancel")
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            
-                    }
-                }
-            }
-        }
-        .toolbar{
-            ToolbarItem(placement: .navigationBarLeading){
-                Button{
-                } label: {
-                    Text("Cancel")
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        
-                }
             }
             
-            ToolbarItem{
+            Section{
+                Text(viewModel.errorMessage).foregroundColor(.red)
+            }
+            Section{
                 Button{
-                    
+                    viewModel.submitForm()
+                    self.presentation.wrappedValue.dismiss()
                 } label: {
-                    Text("Save changes")
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        
+                    Text("Save")
+                        .foregroundColor(.white)
+                        .frame(minWidth: 150)
+                        .padding(.vertical, 10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20).fill(.green)
+                        )
                 }
+                .frame(maxWidth: .infinity, alignment: .center)
+                
+                Button{
+                    viewModel.cancel()
+                    self.presentation.wrappedValue.dismiss()
+                } label: {
+                    Text("Cancel")
+                        .foregroundColor(.white)
+                        .frame(minWidth: 150)
+                        .padding(.vertical, 10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20).fill(.red.opacity(0.8))
+                        )
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
             }
         }
-//        .navigationBarBackButtonHidden(true)
+        .toolbar(.hidden, for: .tabBar)
+        .navigationBarBackButtonHidden(presentation.wrappedValue.isPresented)
     }
-    
 }
 
 struct EntryInputView_Previews: PreviewProvider {

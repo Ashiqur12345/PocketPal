@@ -1,4 +1,5 @@
 import Foundation
+import CoreData
 
 enum SummaryExtent: String, CaseIterable, Identifiable{
     
@@ -24,6 +25,7 @@ enum SummaryExtent: String, CaseIterable, Identifiable{
 
 class SummaryViewModel: ObservableObject{
     
+    private let context: NSManagedObjectContext
     @Published var summaryExtent: SummaryExtent{
         didSet{
             if date < oldestEntryDate{
@@ -35,12 +37,17 @@ class SummaryViewModel: ObservableObject{
             }
         }
     }
-    @Published var date: Date
+    @Published private(set) var date: Date
+    @Published private(set) var dateRange: DateInterval
     
-    init(summaryExtent: SummaryExtent = .monthly, date: Date = .now) {
+    
+    init(context: NSManagedObjectContext, summaryExtent: SummaryExtent = .monthly, date: Date = .now) {
+        self.context = context
         self.summaryExtent = summaryExtent
         self.date = date
+        self.dateRange = DateInterval(start: .now, duration: 0)
     }
+    
     
     var oldestEntryDate: Date{
         return Calendar.current.date(byAdding: summaryExtent.calendarComponent, value: -50, to: .now)!

@@ -11,6 +11,7 @@ struct HomeScreenView: View {
     @Environment(\.managedObjectContext) private var context
     
     @ObservedObject var viewModel: HomeScreenViewModel
+    
     @State var selectedTab: HomeTabs = .home
     var body: some View {
         VStack{
@@ -29,7 +30,7 @@ struct HomeScreenView: View {
                 Text("Pocket Pal").font(.title).bold()
                 
                 ZStack {
-                    SummaryView(viewModel: SummaryViewModel(), showNavigator: false, showGraph: false)
+                    EntryListView(viewModel: EntryListViewModel(context: context, dateRange: DateInterval.init(start: .now, duration: 1)))
                     VStack{
                         Spacer()
                         addEntryButton
@@ -71,7 +72,7 @@ struct HomeScreenView: View {
     private var statsTab: some View{
         NavigationStack{
             VStack{
-                SummaryView(viewModel: SummaryViewModel(), showNavigator: true, showGraph: true)
+                SummaryView(viewModel: SummaryViewModel(context: context), showNavigator: true, showGraph: true)
                 Spacer()
             }
             .navigationBarTitleDisplayMode(.inline)
