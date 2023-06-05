@@ -13,7 +13,7 @@
 		8B1A834B2A1A90F400415C68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1A834A2A1A90F400415C68 /* Assets.xcassets */; };
 		8B1A834E2A1A90F400415C68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1A834D2A1A90F400415C68 /* Preview Assets.xcassets */; };
 		8B4173092A1A9B67004C4729 /* PocketPal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B4173072A1A9B67004C4729 /* PocketPal.xcdatamodeld */; };
-		8B41730B2A1A9D05004C4729 /* PersistencePersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41730A2A1A9D05004C4729 /* PersistencePersistenceController.swift */; };
+		8B41730B2A1A9D05004C4729 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41730A2A1A9D05004C4729 /* PersistenceController.swift */; };
 		8BBA75E12A2BBB460067009F /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA75E02A2BBB460067009F /* EntryListView.swift */; };
 		8BBA75E32A2BBB4B0067009F /* EntryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA75E22A2BBB4B0067009F /* EntryListViewModel.swift */; };
 		8BBA75E52A2BBCCF0067009F /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA75E42A2BBCCF0067009F /* EntryView.swift */; };
@@ -33,7 +33,7 @@
 		8B1A834A2A1A90F400415C68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B1A834D2A1A90F400415C68 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8B4173082A1A9B67004C4729 /* PocketPal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PocketPal.xcdatamodel; sourceTree = "<group>"; };
-		8B41730A2A1A9D05004C4729 /* PersistencePersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencePersistenceController.swift; sourceTree = "<group>"; };
+		8B41730A2A1A9D05004C4729 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		8BBA75E02A2BBB460067009F /* EntryListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
 		8BBA75E22A2BBB4B0067009F /* EntryListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryListViewModel.swift; sourceTree = "<group>"; };
 		8BBA75E42A2BBCCF0067009F /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
@@ -112,10 +112,10 @@
 				8B0C99FB2A1BF56600B93BCD /* Views */,
 				8B0C99F82A1BF4B600B93BCD /* Screens */,
 				8B1A83462A1A90F200415C68 /* PocketPalApp.swift */,
+				8B41730A2A1A9D05004C4729 /* PersistenceController.swift */,
 				8B1A834A2A1A90F400415C68 /* Assets.xcassets */,
 				8B1A834C2A1A90F400415C68 /* Preview Content */,
 				8B4173072A1A9B67004C4729 /* PocketPal.xcdatamodeld */,
-				8B41730A2A1A9D05004C4729 /* PersistencePersistenceController.swift */,
 			);
 			path = PocketPal;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 				8BC66FCE2A22B85500DA8002 /* EntryInputView.swift in Sources */,
 				8BE47F2C2A1D34B9007596FA /* SummaryView.swift in Sources */,
 				8BBA75E12A2BBB460067009F /* EntryListView.swift in Sources */,
-				8B41730B2A1A9D05004C4729 /* PersistencePersistenceController.swift in Sources */,
+				8B41730B2A1A9D05004C4729 /* PersistenceController.swift in Sources */,
 				8B1A83472A1A90F200415C68 /* PocketPalApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
